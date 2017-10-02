@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+# permissions
+chown -R abc:abc \
+	/config
+
+# symlink config
+if [ ! -e /root/.trackma ]; then ln -s /config /root/.trackma ; fi
+
+# must change ownership of /root or Trackma crashes trying to create folder
+chown abc:abc /root
