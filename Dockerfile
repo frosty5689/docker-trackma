@@ -16,7 +16,7 @@ RUN apk add --update \
  && rm -r /root/.cache \
  && pip install --no-cache-dir -U pyinotify
 
-ARG TRACKMA_VERSION=master
+ARG TRACKMA_VERSION=v0.7.4
 
 COPY root/ /
 
