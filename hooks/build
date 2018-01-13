@@ -2,7 +2,7 @@
 args="-t $IMAGE_NAME ."
 
 if [ $DOCKER_TAG != "latest" ]; then
-  args="--build-arg TRACKMA_VERSION=v$DOCKER_TAG $args"
+  args="--build-arg TRACKMA_VERSION=$DOCKER_TAG $args"
 fi
 
 docker build $args
