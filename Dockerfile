@@ -1,24 +1,18 @@
-FROM lsiobase/alpine:3.6
+FROM python:3.6-alpine
 
 LABEL maintainer frosty5689 <frosty5689@gmail.com>
 
-RUN apk add --update \
+RUN apk add --no-cache --update \
     ca-certificates \
-    python3 \
     wget \
     unzip \
  && rm -rf /var/cache/apk* \
  && update-ca-certificates \
- && python3 -m ensurepip \
- && rm -r /usr/lib/python*/ensurepip \
- && pip3 install --upgrade pip setuptools \
- && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
- && rm -r /root/.cache \
- && pip install --no-cache-dir -U pyinotify
+ && pip3 install --upgrade --no-cache-dir setuptools pyinotify \
+ && pip3 install --no-cache-dir -U pyinotify \
+ && rm -rf /root/.cache
 
 ARG TRACKMA_VERSION=master
-
-COPY root/ /
 
 RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
@@ -29,9 +23,11 @@ RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/ar
     python3 setup.py develop && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip
 
+ADD start.sh /opt/trackma
 
 VOLUME /config
 
 WORKDIR /opt/trackma
 
-CMD ["python3", "/usr/bin/trackma"]
+CMD ["/opt/trackma/start.sh"]
+
