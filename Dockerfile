@@ -14,8 +14,6 @@ RUN apk add --no-cache --update \
 
 ARG TRACKMA_VERSION=master
 
-#COPY root/ /
-
 RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
     mkdir -p /opt/trackma && \
@@ -27,6 +25,7 @@ RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/ar
 ADD start.sh /opt/trackma
 
 VOLUME /config
+
 WORKDIR /opt/trackma
+
 CMD ["/opt/trackma/start.sh"]
-#CMD ["python3", "/usr/bin/trackma"]
