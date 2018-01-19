@@ -5,4 +5,7 @@ if [ ! -e /root/.trackma ]; then
 	ln -s /config /root/.trackma
 fi
 
-exec python3 /usr/local/bin/trackma
+# configure account and settings
+python config.py
+
+exec python /usr/local/bin/trackma

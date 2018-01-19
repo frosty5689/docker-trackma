@@ -8,8 +8,7 @@ RUN apk add --no-cache --update \
     unzip \
  && rm -rf /var/cache/apk* \
  && update-ca-certificates \
- && pip3 install --upgrade --no-cache-dir setuptools pyinotify \
- && pip3 install --no-cache-dir -U pyinotify \
+ && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
 
 ARG TRACKMA_VERSION=master
@@ -20,10 +19,10 @@ RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/ar
     unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
     mv /opt/trackma* /opt/trackma &&\
     cd /opt/trackma && \
-    python3 setup.py develop && \
+    python setup.py develop && \
     rm -rf /tmp/trackma-$TRACKMA_VERSION.zip
 
-ADD start.sh /opt/trackma
+ADD run/* /opt/trackma/
 
 VOLUME /config
 
