@@ -31,9 +31,9 @@ else:
         manager.set_default(len(manager.get_accounts()))
 
 config_path = utils.get_root_filename('config.json')
-config_defaults = utils.config_defaults
+
 try:
-    config = utils.parse_config(config_path, config_defaults)
+    config = utils.parse_config(config_path, utils.config_defaults)
 except IOError:
     raise utils.EngineFatal("Couldn't open config file.")
 
