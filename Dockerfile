@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.python3:3.7
+FROM python:3.6-alpine
 
 LABEL maintainer frosty5689 <frosty5689@gmail.com>
 
@@ -14,15 +14,19 @@ RUN apk add --no-cache --update \
 
 ARG TRACKMA_VERSION=master
 
-COPY root/ /
+#COPY root/ /
 
 RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
+    mkdir -p /opt/trackma && \
     unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /tmp && \    
     cd /tmp/trackma* && \
     python3 setup.py install && \
     rm -rf /tmp/*
 
-VOLUME /config
+ADD start.sh /opt/trackma
 
-CMD ["python3", "/usr/bin/trackma"]
+VOLUME /config
+WORKDIR /opt/trackma
+CMD ["/opt/trackma/start.sh"]
+#CMD ["python3", "/usr/bin/trackma"]
