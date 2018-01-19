@@ -1,20 +1,16 @@
-FROM lsiobase/alpine:3.6
+FROM lsiobase/alpine.python3:3.7
 
 LABEL maintainer frosty5689 <frosty5689@gmail.com>
 
-RUN apk add --update \
+RUN apk add --no-cache --update \
     ca-certificates \
-    python3 \
     wget \
     unzip \
  && rm -rf /var/cache/apk* \
  && update-ca-certificates \
- && python3 -m ensurepip \
- && rm -r /usr/lib/python*/ensurepip \
- && pip3 install --upgrade pip setuptools \
- && if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi \
- && rm -r /root/.cache \
- && pip install --no-cache-dir -U pyinotify
+ && pip3 install --upgrade --no-cache-dir setuptools pyinotify \
+ && pip3 install --no-cache-dir -U pyinotify \
+ && rm -rf /root/.cache
 
 ARG TRACKMA_VERSION=master
 
