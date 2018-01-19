@@ -47,7 +47,7 @@ This will run Trackma in detached mode and monitor Plex and update your MAL anim
 * `-e ACCOUNT_API` - The abbreviation of the tracker you will be using (anilist|kitsu|mal|shikimori|vndb)
 * `-e TZ` - Timezone Trackma will run in
 * Trackma configurations can be overriden by setting container environment variables:
-** Simple set the configuration you want to configure using `-e EXAMPLE=value` uppercasing the configuration key
-** For example using `-e SEARCHDIR="/mymedia/videos"` will change the directory Trackma scans for video files
-** All configurable options are available and can be found [here](https://github.com/z411/trackma/blob/v0.7.4/trackma/utils.py#L267)
-** For a detailed explanation of what most of them do see [here](https://github.com/z411/trackma/wiki/Configuration-File)
+    * Simple set the configuration you want to configure using `-e EXAMPLE=value` uppercasing the configuration key
+    * For example using `-e SEARCHDIR="/mymedia/videos"` will change the directory Trackma scans for video files
+    * All configurable options are available and can be found [here](https://github.com/z411/trackma/blob/v0.7.4/trackma/utils.py#L267)
+    * For a detailed explanation of what most of them do see [here](https://github.com/z411/trackma/wiki/Configuration-File)
