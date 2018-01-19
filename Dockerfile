@@ -22,11 +22,16 @@ COPY root/ /
 
 RUN wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
     ls -l /tmp && \
-    unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /tmp && \    
-    cd /tmp/trackma* && \
-    python3 setup.py install && \
-    rm -rf /tmp/*
+    mkdir -p /opt && \
+    unzip /tmp/trackma-$TRACKMA_VERSION.zip -d /opt && \
+    mv /opt/trackma* /opt/trackma &&\
+    cd /opt/trackma && \
+    python3 setup.py develop && \
+    rm -rf /tmp/trackma-$TRACKMA_VERSION.zip
+
 
 VOLUME /config
+
+WORKDIR /opt/trackma
 
 CMD ["python3", "/usr/bin/trackma"]
