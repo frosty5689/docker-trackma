@@ -4,6 +4,7 @@ LABEL maintainer frosty5689 <frosty5689@gmail.com>
 
 RUN apk add --no-cache --update \
     ca-certificates \
+    tzdata \
     wget \
     unzip \
  && rm -rf /var/cache/apk* \
