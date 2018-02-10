@@ -6,7 +6,6 @@ RUN apk add --no-cache --update \
     ca-certificates \
     wget \
     unzip \
- && rm -rf /var/cache/apk* \
  && update-ca-certificates \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
