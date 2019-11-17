@@ -30,7 +30,7 @@ else:
         manager.add_account(username, password, api)
         manager.set_default(len(manager.get_accounts()))
 
-config_path = utils.get_root_filename('config.json')
+config_path = utils.to_config_path('config.json')
 
 try:
     config = utils.parse_config(config_path, utils.config_defaults)
