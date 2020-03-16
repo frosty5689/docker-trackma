@@ -9,7 +9,7 @@ RUN apk add --no-cache --update \
  && pip install --upgrade --no-cache-dir setuptools pyinotify envparse \
  && rm -rf /root/.cache
 
-ARG TRACKMA_VERSION=v0.8.2
+ARG TRACKMA_VERSION=master
 
 RUN apk add --no-cache --update --virtual build-dependencies wget unzip && \
     wget -O /tmp/trackma-$TRACKMA_VERSION.zip https://github.com/z411/trackma/archive/$TRACKMA_VERSION.zip && \
