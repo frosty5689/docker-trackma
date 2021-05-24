@@ -52,3 +52,9 @@ It is important to use your Plex username to login instead of email or you may e
     * For example using `-e SEARCHDIR="/mymedia/videos"` will change the directory Trackma scans for video files
     * All configurable options are available and can be found [here](https://github.com/z411/trackma/blob/master/trackma/utils.py#L350) not all options may be available depending on the version of Trackma you choose to use
     * For a detailed explanation of what most of them do see [here](https://github.com/z411/trackma/wiki/Configuration-File)
+
+
+## Buy me a coffee
+If you appreciate what I do and would like to show some support, buy me a coffee :)
+
+<a href="https://www.buymeacoffee.com/frosty5689" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
